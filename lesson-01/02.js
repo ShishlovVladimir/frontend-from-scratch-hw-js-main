@@ -7,7 +7,7 @@
 
 // your code
 let factorial = 1;
-number = 10;
+let number = 10;
 while (number > 0) {
     factorial *= number;
     number--;
