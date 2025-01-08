@@ -11,4 +11,4 @@ while (number > 0) {
     if (number % 2) sum += number;
     number--;
 }
-console.log(sum)
+

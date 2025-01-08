@@ -4,6 +4,24 @@
  * Результат сохраните в переменной grade.
  */
 
-const score = 70 // тестовое значение, можно изменять
+const score = 0 // тестовое значение, можно изменять
 let grade
 // your code
+switch (true) {
+    case (score <= 49):
+        grade = `F`;
+        break;
+    case (score <= 69):
+        grade = `D`;
+        break;
+    case (score <= 79):
+        grade = `C`;
+        break;
+    case (score <= 89):
+        grade = `B`;
+        break;
+    default:
+        grade = `A`;
+
+}
+console.log(grade)
