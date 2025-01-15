@@ -13,4 +13,15 @@
 includesElement([1, 2, 3], 2)  // должен вернуть `true`.
 */
 
-function includesElement() {}
+function includesElement(arr, element) {
+    // for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] === element) {
+    //         return true;
+    //     }
+    // }
+    return arr.includes(element)
+
+}
+
+let array = [1, 2, 3];
+console.log(includesElement(array, 1))
