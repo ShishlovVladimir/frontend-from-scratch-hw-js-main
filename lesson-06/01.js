@@ -13,7 +13,28 @@
 */
 
 const WEB_TECH_IMAGES = [
-  'https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/32f74d50-68d0-46aa-b035-7b3a5300d2c1_js-magic-logo.jpg',
-  'https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/c8a1f4a6-1337-4899-bdfd-a8c9c7bb806a_css-magic-logo.jpg',
-  'https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/784380b9-6937-42a6-bdfe-869835820234_html-magic-logo.jpg',
-]
+  "https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/32f74d50-68d0-46aa-b035-7b3a5300d2c1_js-magic-logo.jpg",
+  "https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/c8a1f4a6-1337-4899-bdfd-a8c9c7bb806a_css-magic-logo.jpg",
+  "https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/784380b9-6937-42a6-bdfe-869835820234_html-magic-logo.jpg",
+];
+
+const prev = document.querySelectorAll("#prev-button")[0];
+const next = document.querySelectorAll("#next-button")[0];
+const image = document.querySelectorAll("#web-tech-image")[0];
+let count = 0;
+const length = WEB_TECH_IMAGES.length;
+
+next.onclick = function () {
+  image.src = WEB_TECH_IMAGES[(count + 1) % length];
+  count++;
+};
+
+prev.onclick = function () {
+  if (count > 0) {
+    image.src = WEB_TECH_IMAGES[(count - 1) % length];
+    count--;
+  } else {
+    image.src = WEB_TECH_IMAGES[Math.abs(count - (length - 1)) % length];
+    count = length - 1;
+  }
+};
