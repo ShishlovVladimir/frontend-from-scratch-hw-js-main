@@ -31,10 +31,34 @@ next.onclick = function () {
 
 prev.onclick = function () {
   if (count === 0) {
-    image.src = WEB_TECH_IMAGES[(length - 1) % length];
+    image.src = WEB_TECH_IMAGES[length - 1];
     count = length - 1;
   } else {
     image.src = WEB_TECH_IMAGES[(count - 1) % length];
     count--;
   }
 };
+
+// const prevBtn = document.getElementById("prev-button");
+// const nextBtn = document.getElementById("next-button");
+// const imgElement = document.getElementById("web-tech-image");
+// const imgQuantity = WEB_TECH_IMAGES.length;
+// let currentIndex = 0;
+
+// nextBtn.addEventListener("click", () => {
+//   if (currentIndex === imgQuantity - 1) currentIndex = -1;
+//   for (let i = currentIndex + 1; i <= imgQuantity; i++) {
+//     currentIndex++;
+//     imgElement.setAttribute("src", WEB_TECH_IMAGES[currentIndex]);
+//     return currentIndex;
+//   }
+// });
+//
+// prevBtn.addEventListener("click", () => {
+//   for (let i = currentIndex - 1; i <= imgQuantity; i--) {
+//     currentIndex--;
+//     if (currentIndex === -1) currentIndex = imgQuantity - 1;
+//     imgElement.setAttribute("src", WEB_TECH_IMAGES[currentIndex]);
+//     return currentIndex;
+//   }
+// });
