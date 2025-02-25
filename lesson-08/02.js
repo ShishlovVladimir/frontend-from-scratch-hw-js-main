@@ -7,7 +7,8 @@
 
 1. Добавить обработчик событий для кнопки "Старт":
 
-- При нажатии на кнопку "Старт" должен начаться обратный отсчёт с 3 до 1. Значение счётчика должно отображаться в элементе countdownDisplay. Цифра 3 должна отобразиться немедленно.
+- При нажатии на кнопку "Старт" должен начаться обратный отсчёт с 3 до 1. Значение счётчика должно отображаться в элементе countdownDisplay.
+Цифра 3 должна отобразиться немедленно.
 - Каждую секунду значение счётчика должно уменьшаться на 1.
 - Когда счётчик достигнет 0, вместо 0 должен отображаться эмодзи ракеты "🚀" и таймер должен быть остановлен. Пользователь видит: 3 -> 2 -> 1 -> 🚀
 
@@ -25,19 +26,43 @@
 - 🧙‍♂️ Для выполнения этого задания нужно познакомиться с браузерными функциями setInterval (https://doka.guide/js/setinterval/) и clearInterval(https://doka.guide/js/clearinterval/). Они очень похоже на setTimeout и clearTimeout.
  */
 
-const startButton = document.getElementById('start')
-const cancelButton = document.getElementById('cancel')
-const countdownDisplay = document.getElementById('countdown')
+const startButton = document.getElementById("start");
+const cancelButton = document.getElementById("cancel");
+const countdownDisplay = document.getElementById("countdown");
 
-let isTimerStarted = false
-let timerId
+let isTimerStarted = false;
+let timerId = null;
 
-startButton.addEventListener('click', () => {
-  let counter = 3
+startButton.addEventListener("click", () => {
+  if (timerId === null) {
+    let counter = 3;
+    isTimerStarted = true;
 
-  // your code
-})
+    function start() {
+      if (counter === 0) {
+        countdownDisplay.innerHTML = ``;
+        countdownDisplay.textContent = "🚀";
+        clearInterval(timerId);
+        isTimerStarted = false;
+        timerId = null;
+      } else {
+        countdownDisplay.innerHTML = ``;
+        countdownDisplay.prepend(counter);
+      }
+      counter--;
+    }
 
-cancelButton.addEventListener('click', () => {
-  // your code
-})
+    start();
+    timerId = setInterval(start, 1000);
+  }
+});
+
+cancelButton.addEventListener("click", () => {
+  if (isTimerStarted) {
+    clearInterval(timerId);
+    countdownDisplay.innerHTML = ``;
+    countdownDisplay.textContent = `Отменено`;
+    isTimerStarted = false;
+    timerId = null;
+  }
+});
